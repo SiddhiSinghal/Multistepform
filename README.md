@@ -23,6 +23,6 @@ It includes **form validation, state management, local storage persistence, and 
 ## 🛠️ Setup & Installation
 1. **Clone the repository**  
    ```sh
-   git clone https://github.com/<your-username>/<repo-name>.git
+   https://github.com/SiddhiSinghal/Multistepform.git
 2. cd multi-step-form
 3. Open index.html in a browser
