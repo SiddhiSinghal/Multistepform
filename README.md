@@ -16,13 +16,7 @@ It includes **form validation, state management, local storage persistence, and 
 ---
 
 ## 📂 Project Structure
-📂 multi-step-form 
-│── 📄 index.html # Main HTML file 
-│── 📄 style.css # Styling (light/dark mode, responsive design) 
-│── 📄 script.js # JavaScript logic (validation, localStorage, API handling) 
-│── 📄 README.md # Project documentation 
-│── 📄 DESIGN_DECISIONS.md # Explanation of design choices & scalability
-
+<img width="1310" alt="Screenshot 2025-03-16 at 11 12 08 AM" src="https://github.com/user-attachments/assets/f793cfb0-4e92-4ecf-8bcc-71f48470f9ee" />
 
 ---
 
