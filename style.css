@@ -1,3 +1,4 @@
+/* Light Mode - Gradient Background */
 body {
     font-family: Arial, sans-serif;
     display: flex;
@@ -5,21 +6,23 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: #f4f4f4;
+    background: linear-gradient(135deg, #8597d2, #280f47);
     transition: background 0.3s ease-in-out;
 }
 
+/* Form Container */
 .container {
-    background: white;
+    background: rgba(255, 255, 255, 0.95);
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     width: 100%;
-    max-width: 400px;
+    max-width: 420px;
     text-align: center;
     transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
+/* Progress Bar */
 .progress-bar {
     display: flex;
     justify-content: space-between;
@@ -41,6 +44,7 @@ body {
     background: #007bff;
 }
 
+/* Form Steps */
 .form-step {
     display: none;
     opacity: 0;
@@ -54,6 +58,7 @@ body {
     transform: translateY(0);
 }
 
+/* Buttons */
 button {
     margin-top: 10px;
     padding: 10px;
@@ -63,21 +68,46 @@ button {
     cursor: pointer;
     border-radius: 5px;
     transition: background 0.3s ease;
+    width: 100%; /* Make buttons equal width */
 }
 
 button:hover {
     background: #0056b3;
 }
 
+/* Equal-Sized Input Fields */
+input, select, textarea {
+    width: 100%;
+    padding: 12px;  /* Uniform padding */
+    margin: 5px 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    height: 45px; /* Ensures equal height */
+}
+
+/* Ensuring textarea is equal height */
+textarea {
+    height: 45px;
+    resize: none; /* Prevent resizing to maintain uniformity */
+}
+
 /* Dark Mode */
 .dark-mode {
-    background: #121212;
+    background: linear-gradient(135deg, #1e1e2f, #282846);
     color: white;
 }
 
 .dark-mode .container {
-    background: #222;
+    background: rgba(40, 40, 70, 0.95);
     color: white;
+}
+
+.dark-mode input, .dark-mode select, .dark-mode textarea {
+    background: #333;
+    color: white;
+    border: 1px solid #555;
 }
 
 .dark-mode .step {
@@ -104,7 +134,7 @@ button:hover {
     display: flex;
     align-items: center;
     gap: 10px;
-    color: #333;
+    color: #fff;
 }
 
 /* Toggle Switch */

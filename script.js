@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let currentStep = localStorage.getItem("currentStep")
         ? parseInt(localStorage.getItem("currentStep"))
         : 0;
-    
+
     const formData = localStorage.getItem("formData")
         ? JSON.parse(localStorage.getItem("formData"))
         : {};
@@ -37,6 +37,48 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.setItem("currentStep", step);
     }
 
+    function validateStep(step) {
+        const inputs = formSteps[step].querySelectorAll("input, select, textarea");
+        let isValid = true;
+
+        inputs.forEach((input) => {
+            let error = input.nextElementSibling;
+            if (!error || !error.classList.contains("error-message")) {
+                error = document.createElement("p");
+                error.classList.add("error-message");
+                input.after(error);
+            }
+
+            if (!input.value.trim()) {
+                error.textContent = `${input.previousElementSibling.textContent} is required.`;
+                error.style.color = "red";
+                isValid = false;
+            } else {
+                error.textContent = "";
+            }
+
+            // Email validation
+            if (input.type === "email" && input.value.trim()) {
+                const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                if (!emailPattern.test(input.value)) {
+                    error.textContent = "Invalid email format.";
+                    isValid = false;
+                }
+            }
+
+            // Phone number validation (10-digit numeric)
+            if (input.id === "phone" && input.value.trim()) {
+                const phonePattern = /^[0-9]{10}$/;
+                if (!phonePattern.test(input.value)) {
+                    error.textContent = "Phone number must be 10 digits.";
+                    isValid = false;
+                }
+            }
+        });
+
+        return isValid;
+    }
+
     function updateSummary() {
         formData["name"] = document.getElementById("name").value;
         formData["dob"] = document.getElementById("dob").value;
@@ -59,6 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     nextBtns.forEach((button) => {
         button.addEventListener("click", () => {
+            if (!validateStep(currentStep)) return;
             currentStep++;
             showStep(currentStep);
         });
@@ -73,6 +116,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     form.addEventListener("submit", async (event) => {
         event.preventDefault();
+        if (!validateStep(currentStep)) return;
+
         alert("Submitting data...");
 
         const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
