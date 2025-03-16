@@ -28,9 +28,9 @@ It includes **form validation, state management, local storage persistence, and 
 
 ## 🛠️ Setup & Installation
 Follow these steps to run the project on your local machine:  
+```sh
 
 ### 1️⃣ Clone the repository  
-```sh
 git clone https://github.com/SiddhiSinghal/Multistepform.git
 
 ### 2️⃣ Navigate to the project folder
